@@ -4,7 +4,7 @@
 Converter::Converter() {
     reader = new Reader("config.txt");
     std::cout << "Reading config ..." << std::endl;
-    reader->ReadFile(std::bind(&Converter::OnLine, this, std::placeholders::_1));
+    reader->ReadFile(std::bind(&Converter::RegisterCommand, this, std::placeholders::_1));
     std::cout << "Done"; // write time taken
 }
 
@@ -27,7 +27,7 @@ std::vector<std::string> Converter::Convert(std::vector<std::string> line) {
     return lines;
 }
 
-void Converter::OnLine(std::string line) {
+void Converter::RegisterCommand(std::string line) {
     if (line == "Commands")
         readingCommands = true;
     else if (readingCommands) {

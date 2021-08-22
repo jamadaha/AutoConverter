@@ -25,7 +25,7 @@ class Converter {
     Reader *reader;
     bool readingCommands = false;
 
-    void OnLine(std::string line);
+    void RegisterCommand(std::string line);
 };
 
 #endif
