@@ -27,7 +27,7 @@ void Controller::CountLine(std::string line) {
     lineCount++;
 }
 
-void Controller::ConvertInputLine(std::string line) {
+void Controller::ConvertInputLine(std::vector<std::string> line) {
     writer->WriteToFile(converter->Convert(line));
 }
 

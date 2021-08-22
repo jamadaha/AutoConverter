@@ -12,7 +12,7 @@
 class Converter {
     public:
     Converter();
-    std::vector<std::string> Convert(std::string line);
+    std::vector<std::string> Convert(std::vector<std::string> line);
 
     private:
     enum class CommandType {

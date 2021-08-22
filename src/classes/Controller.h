@@ -15,7 +15,7 @@ class Controller {
     public:
     Controller(UI *ui);
     void CountLine(std::string line);
-    void ConvertInputLine(std::string line);
+    void ConvertInputLine(std::vector<std::string> line);
     void Start();
 
     private:
