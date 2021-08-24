@@ -12,7 +12,7 @@ void Config::HandleConfigLine(std::vector<std::string> line) {
         GMInput = line[1];
     else if (line[0] == "OutputFile")
         outputFile = line[1];
-    else if (line[0] == "GMInput")
+    else if (line[0] == "GMOutput")
         GMOutput = line[1];
     else if (line[0] == "Keybind")
         keybind = line[1];
