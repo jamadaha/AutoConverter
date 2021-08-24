@@ -17,7 +17,6 @@ class Converter {
     std::vector<std::string> Convert(std::vector<std::string> line);
 
     private:
-    bool readingCommands = false;
     Config *config;
     
 };
