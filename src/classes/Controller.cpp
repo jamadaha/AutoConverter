@@ -1,9 +1,12 @@
 #include "Controller.h"
 
 Controller::Controller() {
-    converter = new Converter();
-
-    ReadConfig();
+    config = new Config();
+    config->ReadConfig();
+    converter = new Converter(config);
+    reader = new Reader(config->inputFile);
+    writer = new Writer(config->outputFile);
+    writer->InitiateWrite(config->keybind);
 }
 
 void Controller::CountLine(std::string line) {
@@ -16,21 +19,6 @@ void Controller::ConvertInputLine(std::vector<std::string> line) {
 
 void Controller::Convert() {
     reader->ReadFile(std::bind(&Controller::ConvertInputLine, this, std::placeholders::_1));
-}
-
-void Controller::HandleConfigLine(std::vector<std::string> lines) {
-    if (lines[0] == "InputFile")
-        reader = new Reader(lines[1]);
-    else if (lines[0] == "OutputFile")
-        writer = new Writer(lines[1]);
-    else if (lines[0] == "Keybind")
-        writer->InitiateWrite(lines[1]);
-}
-
-void Controller::ReadConfig() {
-    Reader *reader = new Reader("config.txt");
-    reader->ReadFile(std::bind(&Controller::HandleConfigLine, this, std::placeholders::_1));
-    reader->ReadFile(std::bind(&Converter::RegisterCommand, converter, std::placeholders::_1));
 }
 
 void Controller::Start() {

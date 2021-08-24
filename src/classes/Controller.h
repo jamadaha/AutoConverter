@@ -4,6 +4,8 @@
 #include "Reader.h"
 #include "Writer.h"
 #include "Converter.h"
+#include "Config.h"
+#include "Consts.h"
 
 #include <string>
 #include <functional>
@@ -18,14 +20,13 @@ class Controller {
     void Start();
 
     private:
+    Config *config;
     Reader *reader;
     Writer *writer;
     Converter *converter;
     int lineCount = 0;
 
     void Convert();
-    void HandleConfigLine(std::vector<std::string> lines);
-    void ReadConfig();
 
 };
 

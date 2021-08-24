@@ -2,6 +2,8 @@
 #define CONVERTER_H
 
 #include "Reader.h"
+#include "Consts.h"
+#include "Config.h"
 
 #include <string>
 #include <iostream>
@@ -11,20 +13,12 @@
 
 class Converter {
     public:
-    Converter();
+    Converter(Config *config);
     std::vector<std::string> Convert(std::vector<std::string> line);
-    void RegisterCommand(std::string line);
 
     private:
-    enum class CommandType {
-        None,
-        AHS,
-        Say
-    };
-
-    std::vector<std::tuple<CommandType, std::string>> commands;
     bool readingCommands = false;
-
+    Config *config;
     
 };
 
