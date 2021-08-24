@@ -7,6 +7,7 @@ Reader::Reader(std::string path) {
 }
 
 void Reader::ReadFile(std::function<void(std::string)> onLineCallback) {
+	std::cout << "-Reading file " << path << std::endl;
     std::fstream InputFile;
 	InputFile.open(path, std::ios::in);
 	if (InputFile.is_open()) {
@@ -16,9 +17,11 @@ void Reader::ReadFile(std::function<void(std::string)> onLineCallback) {
 		}
 		InputFile.close();
 	}
+	std::cout << "-Done" << std::endl;
 }
 
 void Reader::ReadFile(std::function<void(std::vector<std::string>)> onLineCallback) {
+	std::cout << "-Reading file " << path << std::endl;
     std::fstream InputFile;
 	InputFile.open(path, std::ios::in);
 	if (InputFile.is_open()) {
@@ -28,6 +31,7 @@ void Reader::ReadFile(std::function<void(std::vector<std::string>)> onLineCallba
 		}
 		InputFile.close();
 	}
+	std::cout << "-Done" << std::endl;
 }
 
 std::vector<std::string> Reader::RegexSplit(std::string input) {

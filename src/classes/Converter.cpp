@@ -2,10 +2,6 @@
 #include <regex>
 
 Converter::Converter() {
-    reader = new Reader("config.txt");
-    std::cout << "Reading config ..." << std::endl;
-    reader->ReadFile(std::bind(&Converter::RegisterCommand, this, std::placeholders::_1));
-    std::cout << "Done"; // write time taken
 }
 
 std::vector<std::string> Converter::Convert(std::vector<std::string> line) {

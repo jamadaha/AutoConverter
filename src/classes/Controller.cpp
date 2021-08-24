@@ -1,26 +1,9 @@
 #include "Controller.h"
 
-Controller::Controller(UI *ui) {
-    this->ui = ui;
-
+Controller::Controller() {
     converter = new Converter();
 
-    std::string inputPath;
-    std::string outputPath;
-
-    ui->GetPaths(&inputPath, &outputPath);
-
-    if (inputPath.length() == 0) {
-        std::cout << "No input path given. Using input.txt" << std::endl;
-        reader = new Reader("input.txt");
-    } else
-        reader = new Reader(inputPath);
-
-    if (outputPath.length() == 0) {
-        std::cout << "No output path given. Using output.ahk" << std::endl;
-        writer = new Writer("output.ahk");
-    } else
-        writer = new Writer(outputPath);
+    ReadConfig();
 }
 
 void Controller::CountLine(std::string line) {
@@ -35,13 +18,26 @@ void Controller::Convert() {
     reader->ReadFile(std::bind(&Controller::ConvertInputLine, this, std::placeholders::_1));
 }
 
+void Controller::HandleConfigLine(std::vector<std::string> lines) {
+    if (lines[0] == "InputFile")
+        reader = new Reader(lines[1]);
+    else if (lines[0] == "OutputFile")
+        writer = new Writer(lines[1]);
+}
+
+void Controller::ReadConfig() {
+    Reader *reader = new Reader("config.txt");
+    reader->ReadFile(std::bind(&Controller::HandleConfigLine, this, std::placeholders::_1));
+    reader->ReadFile(std::bind(&Converter::RegisterCommand, converter, std::placeholders::_1));
+}
+
 void Controller::Start() {
     std::cout << "Counting lines ..." << std::endl;
     reader->ReadFile(std::bind(&Controller::CountLine, this, std::placeholders::_1));
     std::cout << "Done - Counted " << lineCount << " lines" << std::endl;
     std::cout << "Converting lines ..." << std::endl;
     Convert();
-    std::cout << "Done"; // write time taken
+    std::cout << "Done" << std::endl; // write time taken
 
     writer->Finish();
 }

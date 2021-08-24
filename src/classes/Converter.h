@@ -13,6 +13,7 @@ class Converter {
     public:
     Converter();
     std::vector<std::string> Convert(std::vector<std::string> line);
+    void RegisterCommand(std::string line);
 
     private:
     enum class CommandType {
@@ -22,10 +23,9 @@ class Converter {
     };
 
     std::vector<std::tuple<CommandType, std::string>> commands;
-    Reader *reader;
     bool readingCommands = false;
 
-    void RegisterCommand(std::string line);
+    
 };
 
 #endif
