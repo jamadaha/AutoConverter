@@ -11,6 +11,7 @@ class Writer {
     Writer(std::string path);
     void WriteToFile(std::vector<std::string> lines);
 
+    void InitiateWrite(std::string keybind);
     void Finish();
 
     private:

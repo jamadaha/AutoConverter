@@ -23,6 +23,8 @@ void Controller::HandleConfigLine(std::vector<std::string> lines) {
         reader = new Reader(lines[1]);
     else if (lines[0] == "OutputFile")
         writer = new Writer(lines[1]);
+    else if (lines[0] == "Keybind")
+        writer->InitiateWrite(lines[1]);
 }
 
 void Controller::ReadConfig() {
