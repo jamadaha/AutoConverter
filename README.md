@@ -4,11 +4,11 @@
 
 1. Build Project
 
-   ![image-20210824090143689](C:\Users\O\AppData\Roaming\Typora\typora-user-images\image-20210824090143689.png)
+   ![image](https://user-images.githubusercontent.com/53914190/130573257-4e21888c-5c6e-4455-afd0-c99f038645a2.png)
 
-2. Add config - Rename config - TEMPLATE.txt to config.txt and add to build folder![image-20210824090258193](C:\Users\O\AppData\Roaming\Typora\typora-user-images\image-20210824090258193.png)
+2. Add config - Rename config - TEMPLATE.txt to config.txt and add to build folder![image](https://user-images.githubusercontent.com/53914190/130573328-00a68505-57b5-4267-8d02-8c84353af42c.png)
 
-3. Add input - Should be csv format without headers e.g.![image-20210824090614248](C:\Users\O\AppData\Roaming\Typora\typora-user-images\image-20210824090614248.png)
+3. Add input - Should be csv format without headers e.g.![image](https://user-images.githubusercontent.com/53914190/130573360-5a964382-31f8-4b4e-83c7-41a5c8adb733.png)
 
    ```
    81765	16343	0	0
@@ -43,12 +43,12 @@
 
    Formatting can be found in config
 
-5. Run .exe
+5. Run .exe - Should see an ahk file after running
 
-   ![image-20210824091048281](C:\Users\O\AppData\Roaming\Typora\typora-user-images\image-20210824091048281.png)
+   ![image](https://user-images.githubusercontent.com/53914190/130573391-f9083c86-40c1-4df6-a10b-77ac35de2acb.png)
 
 6. Run output.ahk
 
-7. Enter game and run keybind
+7. Enter game and run keybind - Default ctrl + j
 
 8. Done
