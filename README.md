@@ -1,5 +1,13 @@
 # AutoCommandGenerator
 
+## Requirements
+
+* Windows OS - See AutoHotkey requirement for why.
+
+* [CMake](https://cmake.org/)
+
+* [AutoHotkey](https://www.autohotkey.com/) - This is not used for compiling, but the program outputs in .ahk format. This is a format which AutoHotkey uses. (Doesn't seem to be available on Linux)
+
 ## How to use
 
 1. Build Project
