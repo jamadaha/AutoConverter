@@ -21,7 +21,7 @@ void Config::HandleConfigLine(std::vector<std::string> line) {
     else if (readingCommands) {
         std::string stringLine = "";
         for (int i = 0; i < line.size(); i++)
-            stringLine += line[i];
+            stringLine += line[i] + " ";
         RegisterCommand(stringLine);
     }
 }
