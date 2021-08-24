@@ -1,0 +1,11 @@
+InputFile input.txt
+OutputFile output.ahk
+
+# Allows two types of input
+## A Command - These have a - prefix
+### This is anything which is written ingame e.g. -.gps
+### Also allows AutoHotkey stuff e.g. {enter} for pressing enter in game
+## Designated AutoHotkey keyword - These have a _ prefix
+### These are AutoHotkey commands, they wil not be written but rather used by AutoHotkey
+
+Commands
