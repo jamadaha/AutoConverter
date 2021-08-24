@@ -38,31 +38,39 @@ std::vector<std::string> Converter::ConvertLog(std::vector<std::string> line) {
             }
             for (int missingArgument = addedArgumentCount; missingArgument < maxArgumentCount; missingArgument++)
                 lines.push_back("");
-            i += addedArgumentCount;
         } else if (line[i] == "[Player:") {
             lines.push_back(line[i + 1]); // player
-            i++;
+            int appendIndex = 2;
+            while (line[i + appendIndex] != "(GUID") {
+                lines[lines.size() - 1] += " " + line[i + appendIndex];
+                appendIndex++;
+            }
         } else if (line[i] == "X:") {
             lines.push_back(line[i + 1]); // xCor
-            i++;
         } else if (line[i] == "Y:") {
             lines.push_back(line[i + 1]); // yCor
-            i++;
         } else if (line[i] == "Z:") {
             lines.push_back(line[i + 1]); // zCor
-            i++;
         } else if (line[i] == "Map:") {
             lines.push_back(line[i + 1]); // mapID
             lines.push_back(line[i + 2]); // mapName
+            int appendIndex = 3;
+            while (line[i + appendIndex] != "Area:") {
+                lines[lines.size() - 1] += " " + line[i + appendIndex];
+                appendIndex++;
+            }
             lines[lines.size() - 1].erase(0, 1);
             lines[lines.size() - 1].erase(lines[lines.size() - 1].size() - 1);
-            i += 2;
         } else if (line[i] == "Area:") {
             lines.push_back(line[i + 1]); // areaID
             lines.push_back(line[i + 2]); // areaName
+            int appendIndex = 3;
+            while (line[i + appendIndex] != "Zone:") {
+                lines[lines.size() - 1] += " " + line[i + appendIndex];
+                appendIndex++;
+            }
             lines[lines.size() - 1].erase(0, 1);
             lines[lines.size() - 1].erase(lines[lines.size() - 1].size() - 1);
-            i += 2;
         }
             
     }
