@@ -1,6 +1,8 @@
 InputFile input.txt
 OutputFile output.ahk
 
+Keybind ^j
+
 # Allows two types of input
 ## A Command - These have a - prefix
 ### This is anything which is written ingame e.g. -.gps
