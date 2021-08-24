@@ -11,6 +11,37 @@ void Writer::WriteToFile(std::vector<std::string> lines) {
 		outFile << lines[i] << std::endl;
 }
 
+void Writer::WriteToCSVFile(std::vector<std::string> lines) {
+	for (int i = 0; i < lines.size(); i++) {
+		outFile << lines[i]; // write seperator to config
+		if (i != lines.size() - 1)
+			outFile << ',';
+	}
+		
+	outFile << std::endl;
+}
+
+void Writer::InitiateWrite(int maxArgumentCount) {
+	outFile.open(path);
+	outFile.clear();
+	outFile 
+	<< "Timestamp,"
+	<< "Command,";
+
+	for (int i = 0; i < maxArgumentCount; i++)
+		outFile << "Arg " << i << ",";
+	outFile
+	<< "Player,"
+	<< "X,"
+	<< "Y,"
+	<< "Z,"
+	<< "MapID,"
+	<< "Map,"
+	<< "AreaID,"
+	<< "Area"
+	<< std::endl;
+}
+
 void Writer::InitiateWrite(std::string keybind) {
 	outFile.open(path);
 	outFile.clear();

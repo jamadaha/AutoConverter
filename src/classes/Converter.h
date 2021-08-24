@@ -14,11 +14,15 @@
 class Converter {
     public:
     Converter(Config *config);
-    std::vector<std::string> Convert(std::vector<std::string> line);
+    std::vector<std::string> ConvertAHK(std::vector<std::string> line);
+    std::vector<std::string> ConvertLog(std::vector<std::string> line);
+    void GetMaxArgumentCount(std::vector<std::string> line);
+    int maxArgumentCount = 0;
 
     private:
     Config *config;
     
+
 };
 
 #endif

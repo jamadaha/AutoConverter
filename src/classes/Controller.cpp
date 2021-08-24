@@ -4,9 +4,22 @@ Controller::Controller() {
     config = new Config();
     config->ReadConfig();
     converter = new Converter(config);
-    reader = new Reader(config->inputFile);
-    writer = new Writer(config->outputFile);
-    writer->InitiateWrite(config->keybind);
+    try {
+        std::cout << "Checking for GMLog input ..." << std::endl;
+        reader = new Reader(config->GMInput);
+        std::cout << "Found. Proceding with file" << std::endl;
+        writer = new Writer(config->GMOutput);
+        runningGMConversion = true;
+    } catch (std::invalid_argument::exception e) {
+        std::cout << "Found none, using default input" << std::endl;
+        reader = new Reader(config->inputFile);
+        writer = new Writer(config->outputFile);
+    }
+    if (runningGMConversion) {
+        reader->ReadFile(std::bind(&Converter::GetMaxArgumentCount, converter, std::placeholders::_1));
+        writer->InitiateWrite(converter->maxArgumentCount);
+    } else
+        writer->InitiateWrite(config->keybind);
 }
 
 void Controller::CountLine(std::string line) {
@@ -14,7 +27,10 @@ void Controller::CountLine(std::string line) {
 }
 
 void Controller::ConvertInputLine(std::vector<std::string> line) {
-    writer->WriteToFile(converter->Convert(line));
+    if (runningGMConversion)
+        writer->WriteToCSVFile(converter->ConvertLog(line));
+    else
+        writer->WriteToFile(converter->ConvertAHK(line));
 }
 
 void Controller::Convert() {

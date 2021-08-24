@@ -5,7 +5,7 @@ Converter::Converter(Config *config) {
     this->config = config;
 }
 
-std::vector<std::string> Converter::Convert(std::vector<std::string> line) {
+std::vector<std::string> Converter::ConvertAHK(std::vector<std::string> line) {
     std::vector<std::string> lines;
     for (int i = 0; i < config->commands.size(); i++) {
         std::string lineToPush;
@@ -23,3 +23,65 @@ std::vector<std::string> Converter::Convert(std::vector<std::string> line) {
 
     return lines;
 }
+
+std::vector<std::string> Converter::ConvertLog(std::vector<std::string> line) {
+    std::vector<std::string> lines;
+    lines.push_back(line[0]); // timestamp
+    for (int i = 0; i < line.size(); i++) {
+        if (line[i] == "Command:") {
+            lines.push_back(line[i + 1]); // command
+            int offset = 2;
+            int addedArgumentCount = 0;
+            while (line[i + offset + addedArgumentCount][0] != '[') {
+                lines.push_back(line[i + offset + addedArgumentCount]); // argument
+                addedArgumentCount++;
+            }
+            for (int missingArgument = addedArgumentCount; missingArgument < maxArgumentCount; missingArgument++)
+                lines.push_back("");
+            i += addedArgumentCount;
+        } else if (line[i] == "[Player:") {
+            lines.push_back(line[i + 1]); // player
+            i++;
+        } else if (line[i] == "X:") {
+            lines.push_back(line[i + 1]); // xCor
+            i++;
+        } else if (line[i] == "Y:") {
+            lines.push_back(line[i + 1]); // yCor
+            i++;
+        } else if (line[i] == "Z:") {
+            lines.push_back(line[i + 1]); // zCor
+            i++;
+        } else if (line[i] == "Map:") {
+            lines.push_back(line[i + 1]); // mapID
+            lines.push_back(line[i + 2]); // mapName
+            lines[lines.size() - 1].erase(0, 1);
+            lines[lines.size() - 1].erase(lines[lines.size() - 1].size() - 1);
+            i += 2;
+        } else if (line[i] == "Area:") {
+            lines.push_back(line[i + 1]); // areaID
+            lines.push_back(line[i + 2]); // areaName
+            lines[lines.size() - 1].erase(0, 1);
+            lines[lines.size() - 1].erase(lines[lines.size() - 1].size() - 1);
+            i += 2;
+        }
+            
+    }
+
+    return lines;
+}
+
+ void Converter::GetMaxArgumentCount(std::vector<std::string> line) {
+    int tempArgCount = 0;
+    for (int i = 0; i < line.size(); i++) {
+        if (line[i] == "Command:") {
+            int offset = 2;
+            while (line[i + offset][0] != '[') {
+                tempArgCount++;
+                i++;
+            }
+            if (tempArgCount > maxArgumentCount)
+                maxArgumentCount = tempArgCount;
+            return;
+        }
+    }
+ }

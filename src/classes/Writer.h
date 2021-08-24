@@ -10,7 +10,9 @@ class Writer {
     public:
     Writer(std::string path);
     void WriteToFile(std::vector<std::string> lines);
+    void WriteToCSVFile(std::vector<std::string> lines);
 
+    void InitiateWrite(int maxArgumentCount);
     void InitiateWrite(std::string keybind);
     void Finish();
 

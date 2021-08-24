@@ -25,6 +25,7 @@ class Controller {
     Writer *writer;
     Converter *converter;
     int lineCount = 0;
+    bool runningGMConversion = false;
 
     void Convert();
 
