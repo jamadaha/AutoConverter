@@ -1,13 +1,31 @@
+# To use this file remove " - TEMPLATE" from name and move it to build folder
+
+# This is the input of the CSV lite data
+# Should have format as CSV (Either whitespace delimiter or comma), but without the header
 InputFile input.txt
+
+# This is the output path for the autokeybind file
 OutputFile output.ahk
 
+# GM log input - If this file exists, the program will ignore conversion of input to AHK
+# The file should just be a renamed log file from server
+GMInput input.log
+
+# This is the output of the GM log conversion
+GMOutput output.csv
+
+# The keybind to run the AHK script
 Keybind ^j
 
-# Allows two types of input
-## A Command - These have a - prefix
-### This is anything which is written ingame e.g. -.gps
-### Also allows AutoHotkey stuff e.g. {enter} for pressing enter in game
-## Designated AutoHotkey keyword - These have a _ prefix
-### These are AutoHotkey commands, they wil not be written but rather used by AutoHotkey
+######################### Commands
 
+# Allows two types of input
+## Input - These have a -prefix e.g. -.gps
+### This is written as if the keys were pushed keyboard
+
+## Action - These have a _prefix e.g. _SLEEP 1500
+### These are AutoHotkey commands, as such, they are not written, but rather used by AutoHotkey
+
+# ALWAYS LAST IN CONFIG - Do not move this to anywhere else in config
+# Write commands below the Commands field
 Commands
