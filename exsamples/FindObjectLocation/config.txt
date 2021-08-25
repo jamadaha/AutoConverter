@@ -1,0 +1,29 @@
+InputFile input.txt
+# GMLog input - If this file exists, the program will ignore conversion of input to ahk
+GMInput input.log
+# This is the output path for the autokeybind file
+OutputFile output.ahk
+# This is the output path converted gm log - If th
+GMOutput output.csv
+
+Keybind ^j
+
+# Allows two types of input
+## A Command - These have a - prefix
+### This is anything which is written ingame e.g. -.gps
+### Also allows AutoHotkey stuff e.g. {enter} for pressing enter in game
+## Designated AutoHotkey keyword - These have a _ prefix
+### These are AutoHotkey commands, they wil not be written but rather used by AutoHotkey
+
+Commands
+-{enter}
+_SLEEP 20
+-.go o $0
+_SLEEP 20
+-{enter}
+_SLEEP 1500
+-{enter}
+_SLEEP 20
+-.gps
+_SLEEP 20
+-{enter}

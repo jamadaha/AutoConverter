@@ -1,0 +1,5 @@
+Timestamp,Command,Arg 0,Arg 1,Player,X,Y,Z,MapID,Map,AreaID,Area
+2021-08-24_18:02:25,.go,o,1,Testhunter,1299.535522,319.459656,-58.974792,0,Eastern Kingdoms,1497,Undercity
+2021-08-24_18:02:26,.gps,,,Testhunter,-959.702026,-3739.060059,5.662160,1,Kalimdor,392,Ratchet
+2021-08-24_18:02:27,.go,o,2,Testhunter,-959.702026,-3739.060059,5.662160,1,Kalimdor,392,Ratchet
+2021-08-24_18:02:28,.gps,,,Testhunter,-7826.899902,-1851.920044,128.527603,0,Eastern Kingdoms,250,Ruins of Thaurissan

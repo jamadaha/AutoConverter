@@ -11,6 +11,3 @@ CTestTestfile.cmake
 _deps
 
 build/*
-input.txt
-output.txt
-config.txt
