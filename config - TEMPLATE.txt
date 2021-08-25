@@ -1,3 +1,4 @@
+######################### Options
 # To use this file remove " - TEMPLATE" from name and move it to build folder
 
 # This is the input of the CSV lite data
