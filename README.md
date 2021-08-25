@@ -17,7 +17,7 @@ This project allows automatic generation of AHK files, which can then be used fo
 
 2. Add config - Rename config - TEMPLATE.txt to config.txt and add to build folder![image](https://user-images.githubusercontent.com/53914190/130573328-00a68505-57b5-4267-8d02-8c84353af42c.png)
 
-3. Add input - Should be CSV format without headers e.g.![image](https://user-images.githubusercontent.com/53914190/130573360-5a964382-31f8-4b4e-83c7-41a5c8adb733.png)
+3. Add input - Should be CSV format without headers, named input.txt by default e.g.![image](https://user-images.githubusercontent.com/53914190/130573360-5a964382-31f8-4b4e-83c7-41a5c8adb733.png)
 
    ```
    81765	16343	0	0
@@ -68,7 +68,7 @@ This project allows automatic generation of AHK files, which can then be used fo
    ![image](https://user-images.githubusercontent.com/53914190/130573257-4e21888c-5c6e-4455-afd0-c99f038645a2.png)
 
 2. Add config - Rename config - TEMPLATE.txt to config.txt and add to build folder ![image](https://user-images.githubusercontent.com/53914190/130573328-00a68505-57b5-4267-8d02-8c84353af42c.png)
-3. Add input - Should be a GM log e.g.                 
+3. Add input - Should be a GM log, named input.log by default e.g.                 
    ![image](https://user-images.githubusercontent.com/53914190/130573360-5a964382-31f8-4b4e-83c7-41a5c8adb733.png)
 
    ```
