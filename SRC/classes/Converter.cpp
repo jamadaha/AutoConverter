@@ -71,6 +71,16 @@ std::vector<std::string> Converter::ConvertLog(std::vector<std::string> line) {
             }
             lines[lines.size() - 1].erase(0, 1);
             lines[lines.size() - 1].erase(lines[lines.size() - 1].size() - 1);
+        } else if (line[i] == "Zone:") {
+            lines.push_back(line[i + 1]); // areaID
+            lines.push_back(line[i + 2]); // areaName
+            int appendIndex = 3;
+            while (line[i + appendIndex] != "Selected:") {
+                lines[lines.size() - 1] += " " + line[i + appendIndex];
+                appendIndex++;
+            }
+            lines[lines.size() - 1].erase(0, 1);
+            lines[lines.size() - 1].erase(lines[lines.size() - 1].size() - 1);
         }
             
     }

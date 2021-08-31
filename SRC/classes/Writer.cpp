@@ -38,7 +38,9 @@ void Writer::InitiateWrite(int maxArgumentCount) {
 	<< "MapID,"
 	<< "Map,"
 	<< "AreaID,"
-	<< "Area"
+	<< "Area,"
+	<< "ZoneID,"
+	<< "Zone"
 	<< std::endl;
 }
 
