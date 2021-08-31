@@ -1,6 +1,8 @@
 # AutoConverter
 This project allows automatic generation of AHK files, which can then be used for automating running GM commands in game. While, it can also convert a GM log to CSV.
 
+Note: This has not been tested thoroughly, as such, there are properly bugs.
+
 ## Requirements
 * [CMake](https://cmake.org/) - They both require this for compiling
 
